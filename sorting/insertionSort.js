@@ -1,7 +1,6 @@
 /*
 *   in some cases it's better than selection and bubble sort, like array is almost sorted.
 */
-
 const insertionSort=(arr)=>{
     let currVal,i,j;
     for(i=1;i<arr.length;i++){
