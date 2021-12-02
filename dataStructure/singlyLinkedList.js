@@ -58,6 +58,24 @@ class SinglyLinkedList{
         this.length--;
         return val;
     }
+    // shift -> removes item in the front
+    shift(){
+        if(this.head === null){
+            return null;
+        }
+        const val = this.head.val;
+        if(this.length === 1){
+            this.head = null;
+            this.tail = null;
+            this.length = 0;
+            return val;
+        }
+        
+        this.head = this.head.next;
+        this.length--;
+        return val; 
+    }
+
 
 }
 
@@ -74,5 +92,5 @@ list.push(9);
 list.push(10);
 let len = list.length;
 while(len--){
-    console.log(list.pop());
+    console.log(list.shift());
 }
