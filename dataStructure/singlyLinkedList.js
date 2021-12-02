@@ -44,6 +44,7 @@ class SinglyLinkedList{
         if(this.head === this.tail ||this.length === 1){
             this.head = null;
             this.tail = null;
+            this.length = 0;
             return val;
         }
         let previous = this.head;
