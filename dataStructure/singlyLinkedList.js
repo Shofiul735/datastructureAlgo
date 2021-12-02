@@ -76,6 +76,18 @@ class SinglyLinkedList{
         return val; 
     }
 
+    // unshift -> unshift adds item in the beginning of the list
+    unshift(val){
+        const node = new Node(val);
+        if(this.length === 0){
+            this.head = node;
+            this.tail = node;
+            this.length++;
+        }
+        let currentHead = this.head;
+        this.head = node;
+        this.head.next = currentHead;
+    }
 
 }
 
@@ -90,6 +102,11 @@ list.push(7);
 list.push(8);
 list.push(9);
 list.push(10);
+list.unshift(-5);
+list.unshift(-4);
+list.unshift(-3);
+list.unshift(-2);
+list.unshift(-1);
 let len = list.length;
 while(len--){
     console.log(list.shift());
