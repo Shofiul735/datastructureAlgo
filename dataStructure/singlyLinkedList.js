@@ -90,6 +90,20 @@ class SinglyLinkedList{
         this.length++;
     }
 
+    // get-> it retruns n'th item
+    get(index){
+        if(index<this.length && index>=0){
+            let current = this.head;
+            while(index){
+               current = current.next;
+               index--; 
+            }
+            return current.val;
+        }else{
+            return undefined;
+        }
+    }
+
 }
 
 const list = new SinglyLinkedList();
@@ -108,6 +122,7 @@ list.unshift(-4);
 list.unshift(-3);
 list.unshift(-2);
 list.unshift(-1);
+console.log(list.get(5)) //return 1
 let len = list.length;
 while(len--){
     console.log(list.shift());
