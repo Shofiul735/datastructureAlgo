@@ -81,14 +81,16 @@ class DoublyLinkedList{
         let current;
         if(index<mid){
             current = this.head;
-            while(index--){
+            while(index){
                 current = current.next;
+                index--;
             }
         }else{
             current = this.tail;
             index = this.length-index-1;
-            while(index--){
+            while(index){
                 current = current.prev;
+                index--;
             }
         }
         return current;
@@ -118,6 +120,26 @@ class DoublyLinkedList{
         return false;
     }
 
+    insertValue(index,value){
+        if(this.#validIndex(index)){
+            if(index === 0){
+                this.unshift(value);
+                this.length++;
+                return true;
+            }
+            let prevNode = this.#getNode(index-1);
+            let nextNode = prevNode.next;
+            let node = new Node(value);
+            node.prev = prevNode;
+            node.next = nextNode;
+            prevNode.next = node;
+            nextNode.prev = node;
+            this.length++;
+            return true;
+        }
+        return false;
+    }
+
 }
 const list = new DoublyLinkedList();
 list.push(1);
@@ -130,5 +152,5 @@ list.push(7);
 list.push(8);
 list.push(9);
 list.push(10);
-list.setValue(7,768);
-console.log(list.getValue(7)); //768
+list.insertValue(9,456);
+console.log(list.getValue(9)); //456
