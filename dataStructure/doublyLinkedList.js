@@ -18,6 +18,10 @@ class DoublyLinkedList{
         if(this.length === 0){
             this.head = node;
             this.tail = node;
+        }else if(this.length === 1){
+            node.prev = this.head;
+            this.head.next = node;
+            this.tail = node;
         }else{
             node.prev = this.tail;
             this.tail.next = node;
@@ -66,10 +70,16 @@ class DoublyLinkedList{
         if(this.length === 0){
             this.head = node;
             this.tail = node;
+        }else if(this.length === 1){
+            this.tail.prev = node;
+            node.next = this.head;
+            node.prev = null;
+            this.head = node;   
         }else{
             let nextNode = this.head;
             node.next = nextNode;
             node.prev = null;
+            nextNode.prev = node;
             this.head = node;
         }
         this.length++;
@@ -164,17 +174,52 @@ class DoublyLinkedList{
         return false;
     }
 
+
+    sortedInsertion(value){
+        if(this.length === 0){
+            let node = new Node(value);
+            this.head = node;
+            this.tail = node;
+        }else if(value<=this.head.value){
+            this.unshift(value);
+            return true;
+        }else if(value>=this.tail.value){
+            this.push(value);
+            return true;
+        }else{
+            let node = new Node(value);
+            let current = this.head.next;
+            while(current){
+                if(value<= current.value){
+                    break;
+                }
+                current = current.next;
+            }
+            let prev = current.prev;
+            node.next = current;
+            node.prev = prev;
+            current.prev = node;
+            prev.next = node;
+
+        }
+
+        this.length++;
+        return true;
+    }
+
 }
 const list = new DoublyLinkedList();
-list.push(1);
-list.push(2);
-list.push(3);
-list.push(4);
-list.push(5);
-list.push(6);
-list.push(7);
-list.push(8);
-list.push(9);
-list.push(10);
-list.remove(5); // at 5, value is 6
-console.log(list.getValue(5)); //7
+list.sortedInsertion(1);
+list.sortedInsertion(2);
+list.sortedInsertion(3);
+list.sortedInsertion(5);
+list.sortedInsertion(7);
+list.sortedInsertion(9);
+list.sortedInsertion(4);
+list.sortedInsertion(6);
+list.sortedInsertion(8);
+list.sortedInsertion(10);
+let len = list.length;
+while(len--){
+    console.log(list.shift());
+}
