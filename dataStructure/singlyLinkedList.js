@@ -90,7 +90,9 @@ class SinglyLinkedList{
         this.length++;
     }
 
-    getNode(index){
+    // prefix # means it's a private method
+
+    #getNode(index){
         if(index<this.length && index>=0){
             let current = this.head;
             while(index){
@@ -107,7 +109,7 @@ class SinglyLinkedList{
     // get-> it retruns n'th item
     getValue(index){
         if(index<this.length && index>=0){
-            return this.getNode(index).val;
+            return this.#getNode(index).val;
         }else{
             return undefined;
         }
@@ -117,12 +119,31 @@ class SinglyLinkedList{
     * and value(that you want to place).function will return true if successful, otherwise false 
     */
     setValue(at,value){
-        let targetNode = this.getNode(at);
+        let targetNode = this.#getNode(at);
         if(targetNode){
             targetNode.val = value;
             return true;
         }
         return false; 
+    }
+    // insert "value" at given index
+    insertValue(at,value){
+        if(at<0 || at> this.length){
+            return false;
+        }else if(at === 0){
+            this.unshift(value);
+        }
+        else if (at === this.length ){
+            this.push(value)
+        }else{
+            let previousNode = this.#getNode(at-1);
+            let nextNode = previousNode.next; // same as let nextNode = this.getNode(at);
+            let newNode = new Node(value);
+            newNode.next = nextNode;
+            previousNode.next = newNode;
+        }
+        this.length++;
+        return true;
     }
 
 }
@@ -143,8 +164,12 @@ list.unshift(-4);
 list.unshift(-3);
 list.unshift(-2);
 list.unshift(-1);
+list.insertValue(11,1000);
+list.insertValue(7,735);
+console.log(list.insertValue(10000,735)); //will return false.
 list.setValue(10,1); // it will palce 1 at 10
 console.log(list.getValue(10)) //return 1
+console.log(`Length: ${list.length}`);
 let len = list.length;
 while(len--){
     console.log(list.shift());
