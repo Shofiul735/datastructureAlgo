@@ -76,6 +76,26 @@ class DoublyLinkedList{
         return true;
     }
 
+    #getNode(index){
+        let mid = Math.floor(this.length/2);
+        if(index<mid){
+            let current = this.head;
+            while(index){
+                current = current.next;
+                index--;
+            }
+        }else{
+            let current = this.tail;
+            index = this.length-index;
+            while(index){
+                current = current.prev;
+                index--;
+            }
+        }
+        return current;
+    }
+
+
 }
 const list = new DoublyLinkedList();
 list.unshift(89);
