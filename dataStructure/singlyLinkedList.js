@@ -161,6 +161,21 @@ class SinglyLinkedList{
         return true;
     }
 
+    // This method will reverse the linked list
+    reverse(){
+        let currentNode = this.head;
+        this.head = this.tail;
+        this.tail = currentNode;
+        let prev = null;
+        let nextNode;
+        for(let i=0;i<this.length;i++){
+            nextNode = currentNode.next;
+            currentNode.next = prev;
+            prev = currentNode
+            currentNode = nextNode;
+        }
+    }
+
 }
 
 const list = new SinglyLinkedList();
@@ -190,3 +205,7 @@ let len = list.length;
 while(len--){
     console.log(list.shift());
 }
+
+console.log("After reverse the linked List:");
+list.reverse();
+list.traverse();
