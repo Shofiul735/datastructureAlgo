@@ -91,12 +91,16 @@ class SinglyLinkedList{
     }
 
     getNode(index){
-        let current = this.head;
+        if(index<this.length && index>=0){
+            let current = this.head;
             while(index){
                current = current.next;
                index--; 
             }
             return current;
+        }else{
+            return undefined;
+        }
     }
 
 
@@ -127,7 +131,7 @@ list.unshift(-4);
 list.unshift(-3);
 list.unshift(-2);
 list.unshift(-1);
-console.log(list.get(5)) //return 1
+console.log(list.getValue(10)) //return 6
 let len = list.length;
 while(len--){
     console.log(list.shift());
