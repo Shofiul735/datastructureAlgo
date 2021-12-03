@@ -145,6 +145,21 @@ class SinglyLinkedList{
         this.length++;
         return true;
     }
+    remove(index){
+        if(index<0 || index>=this.length) return false;
+        if(index === 0){
+            this.shift();
+        }else if(index === this.length-1){
+            this.pop();
+        }else{
+            let previous = this.#getNode(index-1);
+            let current = previous.next;
+            let nextNode = current.next;
+            previous.next = nextNode;
+        }
+        this.length--;
+        return true;
+    }
 
 }
 
@@ -166,6 +181,7 @@ list.unshift(-2);
 list.unshift(-1);
 list.insertValue(11,1000);
 list.insertValue(7,735);
+list.remove(2);
 console.log(list.insertValue(10000,735)); //will return false.
 list.setValue(10,1); // it will palce 1 at 10
 console.log(list.getValue(10)) //return 1
