@@ -113,6 +113,18 @@ class SinglyLinkedList{
         }
     }
 
+    /* setValue -> it overrides value of a node. it has two parameters at(location of the node) 
+    * and value(that you want to place).function will return true if successful, otherwise false 
+    */
+    setValue(at,value){
+        let targetNode = this.getNode(at);
+        if(targetNode){
+            targetNode.val = value;
+            return true;
+        }
+        return false; 
+    }
+
 }
 
 const list = new SinglyLinkedList();
@@ -131,7 +143,8 @@ list.unshift(-4);
 list.unshift(-3);
 list.unshift(-2);
 list.unshift(-1);
-console.log(list.getValue(10)) //return 6
+list.setValue(10,1); // it will palce 1 at 10
+console.log(list.getValue(10)) //return 1
 let len = list.length;
 while(len--){
     console.log(list.shift());
