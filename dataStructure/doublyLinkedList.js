@@ -140,6 +140,30 @@ class DoublyLinkedList{
         return false;
     }
 
+    remove(index){
+        if(this.#validIndex(index)){
+            if(index === 0){
+                this.shift();
+                return true;
+            }else if(index === this.length-1){
+                this.pop();
+                return true;
+            }else{
+                let node = this.#getNode(index);
+                let previous = node.prev;
+                let nextNode = node.next;
+                previous.next = nextNode;
+                nextNode.prev = previous;
+                // To help garbage collector
+                node.next = null;
+                node.prev = null;
+                this.length--;
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
 const list = new DoublyLinkedList();
 list.push(1);
@@ -152,5 +176,5 @@ list.push(7);
 list.push(8);
 list.push(9);
 list.push(10);
-list.insertValue(9,456);
-console.log(list.getValue(9)); //456
+list.remove(5); // at 5, value is 6
+console.log(list.getValue(5)); //7
