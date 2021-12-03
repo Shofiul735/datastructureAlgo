@@ -78,38 +78,39 @@ class DoublyLinkedList{
 
     #getNode(index){
         let mid = Math.floor(this.length/2);
+        let current;
         if(index<mid){
-            let current = this.head;
-            while(index){
+            current = this.head;
+            while(index--){
                 current = current.next;
-                index--;
             }
         }else{
-            let current = this.tail;
-            index = this.length-index;
-            while(index){
+            current = this.tail;
+            index = this.length-index-1;
+            while(index--){
                 current = current.prev;
-                index--;
             }
         }
         return current;
     }
 
+    getValue(index){
+        if(index<0 || index >= this.length) return false;
+        let node = this.#getNode(index);
+        return node.value;
+    }
 
 }
 const list = new DoublyLinkedList();
-list.unshift(89);
 list.push(1);
 list.push(2);
-list.unshift(16);
 list.push(3);
 list.push(4);
 list.push(5);
 list.push(6);
-list.unshift(10);
-let val = list.length;
-while(val){
-    console.log(list.shift());
-    val--;
-}
-console.log(list.shift()); // false
+list.push(7);
+list.push(8);
+list.push(9);
+list.push(10);
+console.log(list.length);
+console.log(list.getValue(7)); //8
