@@ -176,36 +176,47 @@ class SinglyLinkedList{
         }
     }
 
-}
+    // sortedInsert-> This function will add item in sorted order
 
+    sortedInsertion(value){
+        let node = new Node(value)
+        if(this.head === null && this.tail === null && this.length === 0){
+            this.head = node;
+            this.tail = node;
+        }else if(this.head.val>value){
+            this.unshift(value);
+            return true;
+        }else if(this.tail.val<value){
+            this.push(value);
+            return true;
+        }else{
+            let previous = this.head;
+            let current = previous.next;
+            while(current){
+                if(current.val>=value){
+                    break;
+                }
+                previous = current;
+                current = current.next;
+            }
+            previous.next = node;
+            node.next = current;
+        }
+        this.length++;
+        return true;
+    }
+
+}
 const list = new SinglyLinkedList();
-list.push(1);
-list.push(2);
-list.push(3);
-list.push(4);
-list.push(5);
-list.push(6);
-list.push(7);
-list.push(8);
-list.push(9);
-list.push(10);
-list.unshift(-5);
-list.unshift(-4);
-list.unshift(-3);
-list.unshift(-2);
-list.unshift(-1);
-list.insertValue(11,1000);
-list.insertValue(7,735);
-list.remove(2);
-console.log(list.insertValue(10000,735)); //will return false.
-list.setValue(10,1); // it will palce 1 at 10
-console.log(list.getValue(10)) //return 1
-console.log(`Length: ${list.length}`);
-let len = list.length;
-while(len--){
-    console.log(list.shift());
-}
-
-console.log("After reverse the linked List:");
+list.sortedInsertion(10);
+list.sortedInsertion(1);
+list.sortedInsertion(5);
+list.sortedInsertion(-10);
+list.sortedInsertion(-3);
+list.sortedInsertion(7);
+list.sortedInsertion(9);
+list.sortedInsertion(12);
+list.traverse();
+console.log("Length:",list.length);
 list.reverse();
 list.traverse();
