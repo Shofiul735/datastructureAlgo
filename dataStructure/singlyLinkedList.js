@@ -90,15 +90,20 @@ class SinglyLinkedList{
         this.length++;
     }
 
-    // get-> it retruns n'th item
-    getValue(index){
-        if(index<this.length && index>=0){
-            let current = this.head;
+    getNode(index){
+        let current = this.head;
             while(index){
                current = current.next;
                index--; 
             }
-            return current.val;
+            return current;
+    }
+
+
+    // get-> it retruns n'th item
+    getValue(index){
+        if(index<this.length && index>=0){
+            return this.getNode(index).val;
         }else{
             return undefined;
         }
