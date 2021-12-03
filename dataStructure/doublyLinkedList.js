@@ -94,10 +94,28 @@ class DoublyLinkedList{
         return current;
     }
 
-    getValue(index){
+    #validIndex(index){
         if(index<0 || index >= this.length) return false;
-        let node = this.#getNode(index);
-        return node.value;
+        return true;
+    }
+
+
+    getValue(index){
+        if(this.#validIndex(index)){
+            let node = this.#getNode(index);
+            return node.value;
+        }
+        return false;    
+    }
+
+
+    setValue(index,value){
+        if(this.#validIndex(index)){
+            let node = this.#getNode(index);
+            node.value = value;
+            return true;
+        }
+        return false;
     }
 
 }
@@ -112,5 +130,5 @@ list.push(7);
 list.push(8);
 list.push(9);
 list.push(10);
-console.log(list.length);
-console.log(list.getValue(7)); //8
+list.setValue(7,768);
+console.log(list.getValue(7)); //768
