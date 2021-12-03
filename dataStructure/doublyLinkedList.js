@@ -28,7 +28,7 @@ class DoublyLinkedList{
     }
     pop(){
         if(this.length === 0) return false;
-        let val = this.tail.value;
+        let node = this.tail;
         if(this.length === 1){
             this.head = null;
             this.tail = null;
@@ -36,8 +36,10 @@ class DoublyLinkedList{
             this.tail = this.tail.prev;
             this.tail.next = null;
         }
+        // set node.prev to null(node.next is already null) to get deleted by garbage collector
+        node.prev = null;
         this.length--;
-        return val;
+        return node.value;
 
     }
     shift(){
@@ -51,6 +53,10 @@ class DoublyLinkedList{
             next.prev = null;
             this.head = next;
         }
+        // node next and prev set to null to get deleted (node) by garbage collector 
+        node.next = null;
+        node.prev = null;
+        
         this.length--;
         return node.value;
     }
@@ -61,6 +67,8 @@ list.push(1);
 list.push(2);
 list.push(3);
 list.push(4);
+list.push(5);
+list.push(6);
 let val = list.length;
 while(val){
     console.log(list.shift());
