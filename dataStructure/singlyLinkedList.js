@@ -91,7 +91,7 @@ class SinglyLinkedList{
     }
 
     // get-> it retruns n'th item
-    get(index){
+    getValue(index){
         if(index<this.length && index>=0){
             let current = this.head;
             while(index){
