@@ -24,4 +24,17 @@ class Stack{
         return true;
     }
 
+    pop(){
+        let node = this.tail;
+        if(this.length === 1){
+            this.tail = null;
+        }else{
+            this.tail = this.tail.prev;
+            node.prev = null;
+        }
+        this.length--;
+        return node.value;
+    }
+
+
 }
