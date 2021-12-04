@@ -1,3 +1,9 @@
+/*
+* Runtime:
+* push->O(1)
+* pop->O(1)
+*/
+
 class Node{
     constructor(val){
         this.value = val;
@@ -6,8 +12,9 @@ class Node{
 }
 
 class Stack{
+    #tail;
     constructor(){
-        this.tail = null;
+        this.#tail = null;
         this.length = 0;
     }
    
@@ -15,26 +22,14 @@ class Stack{
     push(val){
         let node = new Node(val);
         if(this.length === 0){
-            this.tail = node;
+            this.#tail = node;
         }else{
-            node.prev = this.tail;
-            this.tail = node;
+            node.prev = this.#tail;
+            this.#tail = node;
         }
         this.length++;
         return true;
     }
 
-    pop(){
-        let node = this.tail;
-        if(this.length === 1){
-            this.tail = null;
-        }else{
-            this.tail = this.tail.prev;
-            node.prev = null;
-        }
-        this.length--;
-        return node.value;
-    }
-
-
+    
 }
