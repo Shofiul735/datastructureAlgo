@@ -1,3 +1,10 @@
+/*
+    Queue Runtime:
+        1.enqueue -> O(1)
+        2.dequeue -> O(1)
+*/
+
+
 class Node{
     constructor(val){
         this.value = val;
