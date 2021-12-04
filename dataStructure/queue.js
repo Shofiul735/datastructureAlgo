@@ -45,3 +45,19 @@ class Queue{
         return node.value;
     }
 }
+
+const queue = new Queue();
+queue.enqueue(1);
+queue.enqueue(2);
+queue.enqueue(3);
+queue.enqueue(4);
+queue.enqueue(5);
+queue.enqueue(6);
+queue.enqueue(7);
+queue.enqueue(8);
+queue.enqueue(9);
+queue.enqueue(10);
+let len = queue.length;
+while(len--){
+    console.log(queue.dequeue());
+}
