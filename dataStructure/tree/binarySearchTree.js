@@ -19,6 +19,7 @@ class BinarySearchTree{
         }else{
             let rt = this.#root;
             while(rt!==null){
+                if(rt.value === val) return false;
                 if(val<rt.value){
                     if(rt.left === null){
                         rt.left = node;
@@ -38,10 +39,13 @@ class BinarySearchTree{
         }
     }
 
+
+
+
 }
 const bst = new BinarySearchTree();
 bst.insert(2);
 bst.insert(1);
 bst.insert(6);
-bst.insert(5);
+bst.insert(6);
 console.log(bst);
