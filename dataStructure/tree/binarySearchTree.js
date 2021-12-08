@@ -83,6 +83,19 @@ class BinarySearchTree{
         return data;
     }
 
+    DfsPostOrder(){
+        let data = [];
+        let node = this.#root;
+        const postOder = node => {
+            if(node === null) return;
+            postOder(node.left);
+            postOder(node.right);
+            data.push(node.value);
+        }
+        postOder(node);
+        return data;
+    }
+
 }
 const bst = new BinarySearchTree();
 bst.insert(10);
@@ -92,3 +105,4 @@ bst.insert(9);
 bst.insert(4);
 bst.insert(5);
 console.log(bst.DfsPreOrder())// [10,6,4,5,9,12]
+console.log(bst.DfsPostOrder())// [ 5, 4, 9, 6, 12, 10 ]
