@@ -53,13 +53,29 @@ class BinarySearchTree{
         return false;
     }
 
+    // Breadth first search 
+    Bfs(){
+        let data = [], 
+            queue = [],
+            node = this.#root;
+        queue.push(node);
+        while(queue.length !== 0 ){
+            node = queue.shift();
+            data.push(node.value);
+            if(node.left)
+                queue.push(node.left);
+            if(node.right)
+                queue.push(node.right);
+        } 
+        return data;
+    }
 
 }
 const bst = new BinarySearchTree();
-bst.insert(2);
-bst.insert(1);
+bst.insert(10);
+bst.insert(12);
 bst.insert(6);
-bst.insert(6);
-console.log(bst.find(1));
-console.log(bst.find(7));
-console.log(bst.find(6));
+bst.insert(9);
+bst.insert(4);
+bst.insert(5);
+console.log(bst.Bfs())
