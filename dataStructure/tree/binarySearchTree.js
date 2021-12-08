@@ -96,6 +96,19 @@ class BinarySearchTree{
         return data;
     }
 
+    DfsInOrder(){
+        let data = [];
+        let node = this.#root;
+        const inOder = node => {
+            if(node === null) return;
+            inOder(node.left);
+            data.push(node.value);
+            inOder(node.right);
+        }
+        inOder(node);
+        return data;
+    }
+
 }
 const bst = new BinarySearchTree();
 bst.insert(10);
@@ -106,3 +119,4 @@ bst.insert(4);
 bst.insert(5);
 console.log(bst.DfsPreOrder())// [10,6,4,5,9,12]
 console.log(bst.DfsPostOrder())// [ 5, 4, 9, 6, 12, 10 ]
+console.log(bst.DfsInOrder())// [ 4, 5, 6, 9, 10, 12 ]
