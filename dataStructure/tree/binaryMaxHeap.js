@@ -26,4 +26,26 @@ class BinaryMaxHeap{
         this.#heap.push(value);
         this.#bubbleUp();
     }
+
+    #sinkDown(){
+        let parentIndex = 0,childIndex;
+        childIndex = this.#heap[1]<this.#heap[2]? 2:1;
+        while(this.#heap[parentIndex]<=this.#heap[childIndex]){
+            [this.#heap[parentIndex],this.#heap[childIndex]] = [this.#heap[childIndex],this.#heap[parentIndex]];
+            parentIndex = childIndex;
+            childIndex = this.#heap[2*parentIndex+1]<this.#heap[2*parentIndex+2]? 2*parentIndex+2:2*parentIndex+1;
+        }
+    }
+
+    extractMax(){
+        const max = this.#heap[0];
+            if(this.#heap.length>1){
+            this.#heap[0] = this.#heap.pop();
+            this.#sinkDown();
+        }else{
+            this.#heap.pop();
+        }
+        return max;
+    }
 }
+
