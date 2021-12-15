@@ -13,4 +13,17 @@ class BinaryMaxHeap{
     constructor(){
         this.#heap = [];
     }
+    #bubbleUp(){
+        let childIndex = this.#heap.length-1;
+        let parentIndex = Math.floor((childIndex-1)/2);
+        while(this.#heap[childIndex]>=this.#heap[parentIndex]){
+            [this.#heap[childIndex],this.#heap[parentIndex]] = [this.#heap[parentIndex],this.#heap[childIndex]];
+            childIndex = parentIndex;
+            parentIndex = Math.floor((childIndex-1)/2);
+        }
+    }
+    insert(value){
+        this.#heap.push(value);
+        this.#bubbleUp();
+    }
 }
