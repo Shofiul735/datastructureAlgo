@@ -7,3 +7,10 @@
     In an array left child is stored at 2n+1 and right child is stored at 2n+2.
     For a child index n, its parent is at (n-1)/2 
 */
+
+class BinaryMaxHeap{
+    #heap
+    constructor(){
+        this.#heap = [];
+    }
+}
