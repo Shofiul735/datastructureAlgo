@@ -1,4 +1,4 @@
-class BinaryMinHeap{
+class PriorityQueue{
     #heap
     constructor(){
         this.#heap = [];
@@ -60,20 +60,20 @@ class Node{
 }
 
 
-const bmh = new BinaryMinHeap();
-bmh.enqueue("Izak",100);
-bmh.enqueue("Shofuil",0);
-bmh.enqueue("No-name",10);
-bmh.enqueue("Piku",2);
-bmh.enqueue("Shiku",1);
-bmh.enqueue("Ekri",3);
-bmh.enqueue("Halum",0);
-bmh.enqueue("Meena",15);
-console.log(bmh.dequeue());
-console.log(bmh.dequeue());
-console.log(bmh.dequeue());
-console.log(bmh.dequeue());
-console.log(bmh.dequeue());
-console.log(bmh.dequeue());
-console.log(bmh.dequeue());
-console.log(bmh.dequeue());
+const pq = new PriorityQueue();
+pq.enqueue("Izak",100);
+pq.enqueue("Shofuil",0);
+pq.enqueue("No-name",10);
+pq.enqueue("Piku",2);
+pq.enqueue("Shiku",1);
+pq.enqueue("Ekri",3);
+pq.enqueue("Halum",0);
+pq.enqueue("Meena",15);
+console.log(pq.dequeue());
+console.log(pq.dequeue());
+console.log(pq.dequeue());
+console.log(pq.dequeue());
+console.log(pq.dequeue());
+console.log(pq.dequeue());
+console.log(pq.dequeue());
+console.log(pq.dequeue());
