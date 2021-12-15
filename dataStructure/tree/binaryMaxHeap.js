@@ -39,7 +39,7 @@ class BinaryMaxHeap{
 
     extractMax(){
         const max = this.#heap[0];
-            if(this.#heap.length>1){
+        if(this.#heap.length>1){
             this.#heap[0] = this.#heap.pop();
             this.#sinkDown();
         }else{
@@ -49,3 +49,18 @@ class BinaryMaxHeap{
     }
 }
 
+const bmh = new BinaryMaxHeap();
+bmh.insert(20);
+bmh.insert(2);
+bmh.insert(28);
+bmh.insert(14);
+bmh.insert(26);
+bmh.insert(12);
+bmh.insert(87);
+console.log(bmh.extractMax());
+console.log(bmh.extractMax());
+console.log(bmh.extractMax());
+console.log(bmh.extractMax());
+console.log(bmh.extractMax());
+console.log(bmh.extractMax());
+console.log(bmh.extractMax());
