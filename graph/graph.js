@@ -1,3 +1,5 @@
+// Undirected graph
+
 class Graph{
     #adjacencyList;
     constructor(){
