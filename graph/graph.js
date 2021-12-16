@@ -40,4 +40,14 @@ class Graph{
         return false;
     }
 
+    removeVertex(vertex){
+        let item;
+        while(this.#adjacencyList[vertex].length){
+            item = this.#adjacencyList[vertex].pop();
+            this.removeEdge(vertex,item);
+        }
+        if(this.#adjacencyList[vertex] !== undefined) delete this.#adjacencyList[vertex];
+        return true;
+    }
+
 }
