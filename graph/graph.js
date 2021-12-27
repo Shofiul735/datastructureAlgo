@@ -50,4 +50,38 @@ class Graph{
         return true;
     }
 
+    depthFirstRecursive(start){
+        const result = [];
+        const visited = {};
+
+        const dfs = (vertex)=>{
+            if(!vertex) return null;
+            result.push(vertex);
+            visited[vertex] = true;
+            this.#adjacencyList[vertex].forEach(element => {
+                if(!visited[element]) return dfs(element);
+            });
+        }
+        dfs(start);
+        return result;
+    }
+
 }
+
+const g = new Graph();
+g.addVertex("A");
+g.addVertex("B");
+g.addVertex("C");
+g.addVertex("D");
+g.addVertex("E");
+g.addVertex("F");
+
+g.addEdge("A","B");
+g.addEdge("A","C");
+g.addEdge("B","D");
+g.addEdge("C","E");
+g.addEdge("D","E");
+g.addEdge("D","F");
+g.addEdge("E","F");
+
+console.log(g.depthFirstRecursive("A"));
